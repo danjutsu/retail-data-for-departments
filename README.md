@@ -1,4 +1,7 @@
+
 # retail-data-for-departments
+[retail-sales-analysis_dataset.xlsx](https://github.com/user-attachments/files/20326942/retail-sales-analysis_dataset.xlsx)
+
 manipulating retail data for different departments live environment
 
 first request
@@ -24,7 +27,8 @@ so I started with a JOIN. weather_impact with Date and Region.
     FROM retail_data
     WHERE Weather_Impact IS NOT NULL
     GROUP BY Date, Region -- Use GROUP BY to pick one distinct Weather_Impact per Date/Region pair if multiples exist
-)**
+)
+SELECT COUNT(*) FROM retail_data WHERE Region IS NULL;**
 
 there were still nulls because some regions were null too. I found a pattern. Region and Store_Id correspond so I filled those missing values quickly then re-ran the JOIN.
 
@@ -32,4 +36,7 @@ there were still nulls because some regions were null too. I found a pattern. Re
     SELECT DISTINCT Store_ID, Region
     FROM retail_data
     WHERE Region IS NOT NULL AND Region != ''
-)**
+)
+SELECT COUNT(*) FROM retail_data WHERE Weather_Impact IS NULL;**
+[retail data first pass.csv](https://github.com/user-attachments/files/20326963/retail.data.first.pass.csv)
+
