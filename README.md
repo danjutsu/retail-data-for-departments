@@ -20,8 +20,8 @@ I immediately saw Weather_Impact had NULLs.
 so I started with a JOIN. weather_impact with Date and Region.
 
 there were still nulls because some regions were null too. I found a pattern. Region and Store_Id correspond so I filled those missing values quickly then re-ran the JOIN.
-///JOIN (
-///    SELECT DISTINCT Store_ID, Region
-///    FROM retail_data
+**JOIN (
+"    SELECT DISTINCT Store_ID, Region
+    FROM retail_data
     WHERE Region IS NOT NULL AND Region != ''
-///)
+)"
