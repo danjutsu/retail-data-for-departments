@@ -19,9 +19,17 @@ first I'll examine the data in sheets then clean the necessary data.
 I immediately saw Weather_Impact had NULLs.
 so I started with a JOIN. weather_impact with Date and Region.
 
+JOIN (
+    SELECT Date, Region, Weather_Impact
+    FROM retail_data
+    WHERE Weather_Impact IS NOT NULL
+    GROUP BY Date, Region -- Use GROUP BY to pick one distinct Weather_Impact per Date/Region pair if multiples exist
+)
+
 there were still nulls because some regions were null too. I found a pattern. Region and Store_Id correspond so I filled those missing values quickly then re-ran the JOIN.
-**JOIN (
-"    SELECT DISTINCT Store_ID, Region
+
+JOIN (
+    SELECT DISTINCT Store_ID, Region
     FROM retail_data
     WHERE Region IS NOT NULL AND Region != ''
-)"
+)
